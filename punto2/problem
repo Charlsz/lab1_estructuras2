@@ -1,0 +1,17 @@
+a. Problem Description:
+
+The problem I am investigating is related to the task of finding the lowest common ancestor (LCA) of two nodes in a binary search tree (BST). The LCA is the lowest node in the tree that has both of the given nodes as descendants. This problem is commonly used in genealogy, where the LCA of two people represents their most recent common ancestor.
+
+b. Importance:
+
+This problem is of interest to me because it is a fundamental problem in computer science and is used in a variety of applications, including genealogy, computer networks, and database systems. Additionally, understanding how to find the LCA of two nodes in a binary search tree requires a good understanding of tree traversal and recursive algorithms, which are important topics in computer science.
+
+c. Solution:
+
+Here is a possible implementation of a function that finds the LCA of two nodes in a binary search tree using Python: Tree.py
+
+The Node class represents a node in the binary search tree, with a value (val) and pointers to its left and right child nodes. The lowest_common_ancestor function takes three arguments: the root node of the tree, and two nodes p and q for which we want to find the LCA.
+
+The function starts at the root node and recursively checks whether the LCA is in the left or right subtree of the current node. If the LCA is in the left subtree, the function calls itself with the left child of the current node as the new root. If the LCA is in the right subtree, the function calls itself with the right child of the current node as the new root. If the current node is the LCA, the function returns it.
+
+This function has a time complexity of O(h), where h is the height of the tree. In a balanced binary search tree, the height is O(log n), so the function takes O(log n) time in the average case. However, in the worst case (e.g., an unbalanced tree), the time complexity can be O(n), where n is the number of nodes in the tree.
