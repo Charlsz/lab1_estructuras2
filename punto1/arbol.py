@@ -1,4 +1,7 @@
 class Nodo:
+    """
+    esta clase representa un nodo en un arbol avl
+    """
     def __init__(self, valor):
         self.valor = valor
         self.izquierda = None
@@ -7,6 +10,11 @@ class Nodo:
 
 class AVL:
     def insertar(self, raiz, valor):
+        """
+        aqui insertamos un nuevo nodo buscando la ubicacion correcta
+        del nuevo nodo en el arbol y luego actualiza las alturas
+        de todos los nodos y realiza las rotaciones necesarias para mantener el arbol balanceado
+        """
         if not raiz:
             return Nodo(valor)
         elif valor < raiz.valor:
@@ -34,6 +42,10 @@ class AVL:
         return nodo.altura
 
     def obtener_balance(self, nodo):
+        """
+        este metodo funciona para obtener la diferencia de altura entre los
+        subarboles izquiero y derecho de un nodo
+        """
         if not nodo:
             return 0
         return self.obtener_altura(nodo.izquierda) - self.obtener_altura(nodo.derecha)
@@ -61,6 +73,11 @@ class AVL:
         return y
 
     def imprimir_arbol(self, raiz, espacio):
+        """
+        se utiliza para imprimir en arbol en orden de recorrido Inorden
+        imprime los nodos del subarbol derecho antes que los del subarbol izquiero. asi para reflejar
+        el hecho de que los valores mas grandes se encuentran en el subarbol derecho del arbol BST (binary search tree)
+        """
         if not raiz:
             return
         espacio += 10
