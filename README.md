@@ -1,1 +1,1 @@
-# lab1_estructuras2
+#  Laboratorio de Estructura de Datos 2
