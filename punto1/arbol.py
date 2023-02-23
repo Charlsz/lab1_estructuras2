@@ -12,7 +12,7 @@ class AVL:
     def insertar(self, raiz, valor):
         """
         aqui insertamos un nuevo nodo buscando la ubicacion correcta
-        del nuevo nodo en el arbol y luego actualiza las alturas
+        de este en el arbol y luego actualiza las alturas
         de todos los nodos y realiza las rotaciones necesarias para mantener el arbol balanceado
         """
         if not raiz:
