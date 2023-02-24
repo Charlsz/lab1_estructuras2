@@ -71,8 +71,8 @@ class AVL:
         y.altura = 1 + max(self.obtener_altura(y.izquierda),
                            self.obtener_altura(y.derecha))
         return y
-
-    def imprimir_arbol(self, raiz, espacio):
+        
+    def inorden(self, raiz):
         """
         se utiliza para imprimir en arbol en orden de recorrido Inorden
         imprime los nodos del subarbol derecho antes que los del subarbol izquiero. asi para reflejar
@@ -80,9 +80,6 @@ class AVL:
         """
         if not raiz:
             return
-        espacio += 10
-        self.imprimir_arbol(raiz.derecha, espacio)
-        print(end='\n')
-        for i in range(10, espacio):
-            print(end=' ')
-        print(raiz.valor)
+        self.inorden(raiz.izquierda)
+        print(raiz.valor, end=" ")
+        self.inorden(raiz.derecha)
