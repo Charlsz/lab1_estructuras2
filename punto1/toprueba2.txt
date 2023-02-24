@@ -1,0 +1,27 @@
+Queremos hacer este arbol
+      30
+     /  \
+   20    40
+  /  \     \
+10   25    50
+
+Ahora insertaremos el valor 15 en el arbol (ver en prueba2.py), el mismo arbol se va a autobalancear gracias al codigo que hicimos.
+Quedaría de la siguiente manera:
+      30
+     /  \
+   20    40
+  /  \     \
+10   25    50
+     /
+    15
+
+con el codigo implementado actualmente quedaria algo asi: 
+ANTES 10 -> 20 -> 25 -> 30 -> 40 -> 50  
+AHORA 10 -> 15 -> 20 -> 25 -> 30 -> 40 -> 50
+          30
+         /  \
+       20    40
+      /  \     \
+    15   25    50
+    /
+  10
