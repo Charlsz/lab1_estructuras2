@@ -15,9 +15,9 @@ Quedaría de la siguiente manera:
      /
     15
 
-con el codigo implementado actualmente quedaria algo asi: 
 ANTES 10 -> 20 -> 25 -> 30 -> 40 -> 50  
 AHORA 10 -> 15 -> 20 -> 25 -> 30 -> 40 -> 50
+
           30
          /  \
        20    40
