@@ -84,6 +84,38 @@ class AVL:
         else:
             return self.buscar_nodo(raiz.derecha, valor)
         
+
+    def encontrar_nodo_abuelo(self, raiz, valor):
+        """
+        Encuentra el nodo abuelo del nodo con el valor dado
+        Si el nodo no tiene abuelo, retorna None
+        """
+        nodo = self.buscar_nodo(raiz, valor)
+        if not nodo or not nodo.izquierda or not nodo.derecha:
+            return None
+        if nodo == raiz:
+            return None
+        padre = self.encontrar_nodo_padre(raiz, valor)
+        abuelo = self.encontrar_nodo_padre(raiz, padre.valor)
+        return abuelo
+    
+    def encontrar_nodo_padre(self, raiz, valor):
+        """
+        Encuentra el nodo padre del nodo con el valor dado
+        Si el nodo no tiene padre, retorna None
+        """
+        if not raiz or raiz.valor == valor:
+            return None
+        if raiz.izquierda and raiz.izquierda.valor == valor:
+            return raiz
+        if raiz.derecha and raiz.derecha.valor == valor:
+            return raiz
+        if valor < raiz.valor:
+            return self.encontrar_nodo_padre(raiz.izquierda, valor)
+        else:
+            return self.encontrar_nodo_padre(raiz.derecha, valor)
+
+        
     def inorden(self, raiz):
         """
         se utiliza para imprimir en arbol en orden de recorrido Inorden
