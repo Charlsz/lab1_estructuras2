@@ -71,6 +71,18 @@ class AVL:
         y.altura = 1 + max(self.obtener_altura(y.izquierda),
                            self.obtener_altura(y.derecha))
         return y
+    
+    def buscar_nodo(self, raiz, valor):
+        """
+        Busca un nodo específico en el árbol
+        Si el nodo no existe, retorna none
+        """
+        if not raiz or raiz.valor == valor:
+            return raiz
+        elif valor < raiz.valor:
+            return self.buscar_nodo(raiz.izquierda, valor)
+        else:
+            return self.buscar_nodo(raiz.derecha, valor)
         
     def inorden(self, raiz):
         """
