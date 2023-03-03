@@ -1,4 +1,3 @@
-import csv
 class Nodo:
     """
     esta clase representa un nodo en un arbol avl
@@ -140,9 +139,8 @@ class AVL:
             return abuelo.izquierda
 
         
-    def inorden(self, raiz):
-        if not raiz:
-            return
-        self.inorden(raiz.izquierda)
-        print(raiz.valor, end=" ")
-        self.inorden(raiz.derecha)
+    def inorden(self, raiz, nodos):
+        if raiz:
+            self.inorden(raiz.izquierda, nodos)
+            nodos.append(raiz.valor)
+            self.inorden(raiz.derecha, nodos)

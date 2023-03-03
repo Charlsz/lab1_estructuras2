@@ -1,6 +1,5 @@
 import csv
 from arbol import *
-
 def letra_a_numero(letra):
     if letra.isalpha():
         return ord(letra.lower()) - 96
@@ -21,22 +20,19 @@ def procesar_archivo_csv(archivo):
             grupos[clave] = [linea]
         else:
             grupos[clave].append(linea)
-
-    resultado = []
-    for clave, grupo in grupos.items():
+            
+    variables = {} # Crear un diccionario para almacenar las variables
+    for i, (clave, grupo) in enumerate(grupos.items()):
         lista_resultado = grupo[0]
         for linea in grupo[1:]:
             lista_resultado[2:5] += linea[2:5]
-        resultado.append(lista_resultado)
-
-    for i, lista in enumerate(resultado):
-        nombre_variable = ''.join([str(letra_a_numero(letra)) for letra in lista[1]])
-        exec(f"var{i+1} = {lista}")
-        
-    for i in range(len(resultado)):
-        nombre_variable = f"var{i+1}"
-        print(nombre_variable + ": " + str(eval(nombre_variable)))
-
-    return resultado
-
+        nombre_variable = ''.join([str(letra_a_numero(letra)) for letra in lista_resultado[1]])
+        variables[nombre_variable] = lista_resultado # Agregar cada variable al diccionario
+    
+    arbol = AVL() # Crear el árbol AVL
+    
+    for nombre_variable, lista in variables.items():
+        arbol.insertar(nombre_variable, lista) # Agregar cada variable al nodo correspondiente del árbol
+    
+    return arbol # Devolver el árbol AVL resultante
 
