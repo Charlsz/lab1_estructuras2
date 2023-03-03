@@ -1,3 +1,4 @@
+import csv
 class Nodo:
     """
     esta clase representa un nodo en un arbol avl

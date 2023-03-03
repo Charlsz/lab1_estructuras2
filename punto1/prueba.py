@@ -1,9 +1,12 @@
 from arbol import *
 from archivo import *
-arbol = AVL()
-raiz = None
 
-procesar_archivo_csv('User_trac_data.csv')
+avl = AVL()
+resultado = procesar_archivo_csv('punto1/User_track_data.csv')
 
-raiz = arbol.insertar(raiz, 30)
-arbol.inorden(raiz)
+for lista in resultado:
+    clave = lista[0]
+    valor = lista[1:]
+    avl.insertar(avl.raiz, (clave, valor))
+
+AVL.inorden(avl.raiz)
