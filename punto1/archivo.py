@@ -26,13 +26,15 @@ def procesar_archivo_csv(archivo):
         lista_resultado = grupo[0]
         for linea in grupo[1:]:
             lista_resultado[2:5] += linea[2:5]
-        nombre_variable = ''.join([str(letra_a_numero(letra)) for letra in lista_resultado[1]])
+        nombre_variable = ''.join([str(letra_a_numero(letra)) for letra in lista_resultado[1]]) #Transforma el ID del usuario a números
         variables[nombre_variable] = lista_resultado # Agregar cada variable al diccionario
     
-    arbol = AVL() # Crear el árbol AVL
+    arbol = AVL()   # Crear el árbol AVL
+    raiz = None
+
     
     for nombre_variable, lista in variables.items():
-        arbol.insertar(nombre_variable, lista) # Agregar cada variable al nodo correspondiente del árbol
-    
-    return arbol # Devolver el árbol AVL resultante
+        raiz = arbol.insertarUsuario(raiz, nombre_variable, lista) # Agregar cada variable al nodo correspondiente del árbol
+
+    return raiz # Devolver el árbol AVL resultante
 

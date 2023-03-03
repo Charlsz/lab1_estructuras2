@@ -3,6 +3,7 @@ arbol = AVL()
 raiz = None
 #creamos el arbol que mostramos al inicio de toprueba2.txt
 raiz = arbol.insertar(raiz, 30)
+print(raiz)
 raiz = arbol.insertar(raiz, 20)
 raiz = arbol.insertar(raiz, 40)
 raiz = arbol.insertar(raiz, 10)

@@ -12,7 +12,47 @@ class Nodo:
         self.derecha = None
         self.altura = 1
 
+    def __repr__(self) -> str:
+        return str(self.valor)
+
+class Usuario (Nodo):
+
+    def __init__(self, valor, lista):
+        super().__init__(valor)
+        self.lista = lista
+
+    def __repr__(self) -> str:
+        return self.lista[0]
+
 class AVL:
+
+    def insertarUsuario(self, raiz, valor, lista):
+        """
+        aqui insertamos un nuevo nodo buscando la ubicacion correcta
+        de este en el arbol y luego actualiza las alturas
+        de todos los nodos y realiza las rotaciones necesarias para mantener el arbol balanceado
+        """
+        if not raiz:
+            return Usuario(valor, lista)
+        elif valor < raiz.valor:
+            raiz.izquierda = self.insertarUsuario(raiz.izquierda, valor, lista)
+        else:
+            raiz.derecha = self.insertarUsuario(raiz.derecha, valor, lista)
+        raiz.altura = 1 + max(self.obtener_altura(raiz.izquierda),
+                              self.obtener_altura(raiz.derecha))
+        balance = self.obtener_balance(raiz)
+        if balance > 1 and valor < raiz.izquierda.valor:
+            return self.rotar_derecha(raiz)
+        if balance < -1 and valor > raiz.derecha.valor:
+            return self.rotar_izquierda(raiz)
+        if balance > 1 and valor > raiz.izquierda.valor:
+            raiz.izquierda = self.rotar_izquierda(raiz.izquierda)
+            return self.rotar_derecha(raiz)
+        if balance < -1 and valor < raiz.derecha.valor:
+            raiz.derecha = self.rotar_derecha(raiz.derecha)
+            return self.rotar_izquierda(raiz)
+        return raiz
+
     def insertar(self, raiz, valor):
         """
         aqui insertamos un nuevo nodo buscando la ubicacion correcta
@@ -142,5 +182,5 @@ class AVL:
     def inorden(self, raiz):
         if raiz:
             self.inorden(raiz.izquierda)
-            print(raiz.valor, end=" ")
+            print(raiz, end=" ")
             self.inorden(raiz.derecha)
