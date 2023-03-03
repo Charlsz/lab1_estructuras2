@@ -8,7 +8,7 @@ def letra_a_numero(letra):
 
 def procesar_archivo_csv(archivo):
     lineas = []
-    with open(archivo) as csv_file:
+    with open(archivo,encoding="utf-8") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         for linea in csv_reader:
             lineas.append(linea)
@@ -37,3 +37,5 @@ def procesar_archivo_csv(archivo):
         print(nombre_variable + ": " + str(eval(nombre_variable)))
     
     return resultado
+
+resultados = procesar_archivo_csv('punto1/User_track_data.csv')
