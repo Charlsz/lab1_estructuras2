@@ -139,8 +139,8 @@ class AVL:
             return abuelo.izquierda
 
         
-    def inorden(self, raiz, nodos):
+    def inorden(self, raiz):
         if raiz:
-            self.inorden(raiz.izquierda, nodos)
-            nodos.append(raiz.valor)
-            self.inorden(raiz.derecha, nodos)
+            self.inorden(raiz.izquierda)
+            print(raiz.valor, end=" ")
+            self.inorden(raiz.derecha)
