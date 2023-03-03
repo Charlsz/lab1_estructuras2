@@ -3,6 +3,10 @@ class Nodo:
     esta clase representa un nodo en un arbol avl
     """
     def __init__(self, valor):
+        """
+        Se le asignan los valores principales de un nodo en un arbol
+        La altura por defecto de un Nodo es 1
+        """
         self.valor = valor
         self.izquierda = None
         self.derecha = None
@@ -43,8 +47,8 @@ class AVL:
 
     def obtener_balance(self, nodo):
         """
-        este metodo funciona para obtener la diferencia de altura entre los
-        subarboles izquiero y derecho de un nodo
+        Encuentra el balance de los subarboles izquierdo y derecho
+        Si no hay nodos hijos, retorna 0
         """
         if not nodo:
             return 0
@@ -114,14 +118,28 @@ class AVL:
             return self.encontrar_nodo_padre(raiz.izquierda, valor)
         else:
             return self.encontrar_nodo_padre(raiz.derecha, valor)
+        
+    def encontrar_nodo_tio(self, raiz, valor):
+        """
+        Encuentra el nodo tío del nodo con el valor dado
+        Si el nodo no tiene tío, retorna None
+        """
+        nodo = self.buscar_nodo(raiz, valor)
+        if not nodo:
+            return None
+        padre = self.encontrar_nodo_padre(raiz, valor)
+        if not padre:
+            return None
+        abuelo = self.encontrar_nodo_padre(raiz, padre.valor)
+        if not abuelo:
+            return None
+        if padre == abuelo.izquierda:
+            return abuelo.derecha
+        else:
+            return abuelo.izquierda
 
         
     def inorden(self, raiz):
-        """
-        se utiliza para imprimir en arbol en orden de recorrido Inorden
-        imprime los nodos del subarbol derecho antes que los del subarbol izquiero. asi para reflejar
-        el hecho de que los valores mas grandes se encuentran en el subarbol derecho del arbol BST (binary search tree)
-        """
         if not raiz:
             return
         self.inorden(raiz.izquierda)
